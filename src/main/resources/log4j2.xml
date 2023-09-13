@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+        <Console name="LogToConsole" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <File name="httpAccessAppender" filename="http-access.log">
+            <PatternLayout pattern="Some user defined pattern: %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="PROXY_ACCESS_LOGGER" level="info" additivity="false">
+            <AppenderRef ref="httpAccessAppender"/>
+        </Logger>
+        <Logger name="com.jambit" level="debug" additivity="false">
+            <AppenderRef ref="LogToConsole"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="LogToConsole"/>
+        </Root>
+    </Loggers>
+</Configuration>
